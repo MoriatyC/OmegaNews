@@ -1,7 +1,14 @@
-$('.category').on('click', function() {
-	var id = $(this).attr("id");	
-	$(this).attr("href",id + ".html");
-	alert(id + ".html");
-	console.log(this.attr("href"));
+$('.category').on('click', function() {	
+	$.ajax({
+		url : '/category',
+		type : 'get',
+		dataType : 'text',
+		data : {
+			"id" : $(this).attr("id")
+		},
+		success : function(data) {
+			$('#replacement').html(data);
+		}
+	});
 })
 
