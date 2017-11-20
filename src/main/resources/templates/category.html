@@ -1,29 +1,47 @@
-	<div class="articles" >
-		<header>
-			<h3 class="title-head" th:text="${category.chineseName}"></h3>
-		</header>
-		<div class="article" th:each="news:${newsList}">
-			<div class="article-left">
-				<a href="single.html"><img th:src="${news.imgsrc}"></a>
-			</div>
-			<div class="article-right">
-				<div class="article-title">
-					<p>
-						<a class="span_link" href="#" th:text="${news.commentCount}"><span
-							class="glyphicon glyphicon-comment"></span> </a><a class="span_link"
-							href="#"><span class="glyphicon glyphicon-eye-open"></span>104
-						</a><a class="span_link" href="#"><span
-							class="glyphicon glyphicon-thumbs-up"></span>52</a>
-					</p>
-					<a class="title" href="single.html" th:text="${news.title}"> </a>
-				</div>
-				<div class="article-text">
-					<p th:text="${news.digest}"></p>
-					<a href="single.html"><img src="/bootstrap/images/more.png"
-						alt="图片飞走了" /></a>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
+<div th:text="${totalPages}"></div>
+<div class="articles">
+	<header>
+		<!-- <h3 class="title-head" th:text="${category.chineseName}"></h3> -->
+	</header>
+	<div class="article" th:each="news:${newsList}">
+		<div class="article-left">
+			<a href="single.html"><img th:src="${news.imgsrc}"></a>
 		</div>
+		<div class="article-right">
+			<div class="article-title">
+				<p>
+					<a class="span_link" href="#" th:text="${news.commentCount}"><span
+						class="glyphicon glyphicon-comment"></span> </a><a class="span_link"
+						href="#"><span class="glyphicon glyphicon-eye-open"></span>104
+					</a><a class="span_link" href="#"><span
+						class="glyphicon glyphicon-thumbs-up"></span>52</a>
+				</p>
+				<a class="title" href="single.html" th:text="${news.title}"> </a>
+			</div>
+			<div class="article-text">
+				<p th:text="${news.digest}"></p>
+				<a href="single.html"><img src="/bootstrap/images/more.png"
+					alt="图片飞走了" /></a>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
 	</div>
+</div>
+<div th:fragment="paginationbar"> 
+   <div> 
+    <ul class="pagination pagination-centered"> 
+    <!-- 1. ← First的属性设置   首先判断是不是第一个，如果是第一个那么 ← First不能点击且没有超链接，否非← First有超链接
+         2. 《的属性设置 判断有没有前一个，没有则不能点，如果没有前一个那么只有《，否则不但有《还有超链接
+         3. page.items：原生的page包含两个属性number（选中页），size（步长）比如5，那么page.items代表包含以选中页为中心的5个页面。
+            3.1 如果是current页那么设置为acitve，并且text为item.number,否则设置text为item.number并设置url
+         4. 下同-->
+     <li th:class="${page.firstPage}?'disabled':''"><span th:if="${page.firstPage}"  th:class="page">← First</span> <a th:class="mypage" th:if="${not page.firstPage}" >← First</a></li> 
+     <li th:class="${page.hasPreviousPage}? '' : 'disabled'"><span th:if="${not page.hasPreviousPage}">&laquo;</span> <a th:class="mypage" th:if="${page.hasPreviousPage}"   title="Go to previous page">&laquo;</a></li> 
+     <li th:each="item : ${page.items}" th:class="${item.current}? 'active' : ''"><span th:if="${item.current}"  th:text="${item.number}">1</span> <a th:class="mypage" th:if="${not item.current}" data-th-size="${page.getSize()}" ><span th:text="${item.number}" th:class="page">1</span></a></li> 
+     <li th:class="${page.hasNextPage}? '' : 'disabled'"><span th:if="${not page.hasNextPage}" >&raquo;</span> <a th:class="mypage" th:if="${page.hasNextPage}"  title="Go to next page">&raquo;</a></li> 
+     <li th:class="${page.lastPage}? 'disabled' : ''"><span th:if="${page.lastPage}" >Last →</span> <a th:class="mypage" th:if="${not page.lastPage}" data-th-size="${page.getTotalPages()}" >Last →</a></li> 
+    </ul> 
+   </div> 
+  </div>
+
