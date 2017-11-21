@@ -2,67 +2,71 @@
 <html>
 <head>
 <title>OmegaNews</title>
-<link href="bootstrap/css/bootstrap.css" rel='stylesheet'
-	type='text/css' />
+<link th:href="@{/bootstrap/css/bootstrap.css}" rel='stylesheet'
+    type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
 <!-- Custom Theme files -->
-<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css"
-	media="all" />
+<link th:href="@{/bootstrap/css/style.css}" rel="stylesheet" type="text/css"
+    media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
-	content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+    content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+    
+    
+    
+    
+     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 </script>
 <!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.js}"></script>
 <!-- //for bootstrap working -->
 <!-- web-fonts -->
 <link
-	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-	rel='stylesheet' type='text/css'>
+    href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+    rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Varela+Round'
-	rel='stylesheet' type='text/css'>
-<script src="js/responsiveslides.min.js"></script>
+    rel='stylesheet' type='text/css'>
+<script th:src="@{/js/responsiveslides.min.js}"></script>
 <script>
-	$(function() {
-		$("#slider").responsiveSlides({
-			auto : true,
-			nav : true,
-			speed : 500,
-			namespace : "callbacks",
-			pager : true,
-		});
-	});
+    $(function() {
+        $("#slider").responsiveSlides({
+            auto : true,
+            nav : true,
+            speed : 500,
+            namespace : "callbacks",
+            pager : true,
+        });
+    });
 </script>
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+<script type="text/javascript" th:src="@{/js/easing.js}"></script>
 <!--/script-->
 <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 900);
-		});
-	});
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop : $(this.hash).offset().top
+            }, 900);
+        });
+    });
 </script>
 </head>
 <body>
 	<!-- header-section-starts-here -->
-	<div class="header">
+	<div class="header" th:fragment="headertop">
 		<div class="header-bottom">
 			<div class="logo text-center">
-				<a href="index.html"><img src="bootstrap/images/logo.jpg" alt="" /></a>
+				<a href="index.html"><img th:src="@{/bootstrap/images/logo.jpg}" alt="" /></a>
 			</div>
 			<div class="navigation">
 				<nav class="navbar navbar-default" role="navigation">
@@ -82,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="index.html">首页</a></li>
+								<li class="active"><a href="/">首页</a></li>
 								<li th:each="category:${categories}"><a class="category"
 									th:id="${category.categoryName}"
 									th:text="${category.chineseName}"></a></li>
@@ -102,8 +106,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</div>
 								<!-- search-scripts -->
-								<script src="js/classie.js"></script>
-								<script src="js/uisearch.js"></script>
+								<script th:src="@{/js/classie.js}"></script>
+								<script th:src="@{/js/uisearch.js}"></script>
 								<script>
 									new UISearch(document
 											.getElementById('sb-search'));
@@ -120,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- header-section-ends-here -->
-	<div class="wrap">
+	<div class="wrap" th:fragment="wrap">
 		<div class="move-text">
 			<div class="breaking_news">
 				<h2>爆点新闻</h2>
@@ -137,7 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>
 			</div>
 			<div class="clearfix"></div>
-			<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+			<script type="text/javascript" th:src="@{/js/jquery.marquee.min.js}"></script>
 			<script>
 				$('.marquee').marquee({
 					pauseOnHover : true
@@ -153,9 +157,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<header>
 						<h3 class="title-head">最新资讯</h3>
 					</header>
-					<div class="article" th:each="news:${newsList}">
+					<div class="article" th:each="news:${newsList}" >
 						<div class="article-left">
-							<a href="single.html"><img th:src="${news.imgsrc}"></a>
+							<a th:href="'single/'+${news.docid}"><img th:src="${news.imgsrc}"></a>
 						</div>
 						<div class="article-right">
 							<div class="article-title">
@@ -167,12 +171,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										class="span_link" href="#"><span
 										class="glyphicon glyphicon-thumbs-up"></span>52</a>
 								</p>
-								<a class="title" href="single.html" th:text="${news.title}">
+								<a class="title" th:href="'single/'+${news.docid}" th:text="${news.title}">
 								</a>
 							</div>
 							<div class="article-text">
 								<p th:text="${news.digest}"></p>
-								<a href="single.html"><img src="/bootstrap/images/more.png"
+								<a th:href="'single/'+${news.docid}"><img th:src="@{/bootstrap/images/more.png}"
 									alt="图片飞走了" /></a>
 								<div class="clearfix"></div>
 							</div>
@@ -182,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 
 			</div>
-			<div class="col-md-4 side-bar">
+			<div class="col-md-4 side-bar" th:fragment="right">
 				<div class="first_half">
 
 					<div class="list_vertical">
@@ -199,7 +203,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/bus2.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/bus2.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html"> The section of
@@ -216,7 +220,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/bus1.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/bus1.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html"> Lorem Ipsum is
@@ -233,7 +237,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/bus3.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/bus3.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html">There are many
@@ -250,7 +254,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/bus4.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/bus4.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html">Sed ut
@@ -281,7 +285,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/tec2.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/tec2.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html"> The section of
@@ -298,7 +302,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/tec1.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/tec1.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html"> Lorem Ipsum is
@@ -315,7 +319,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/tec3.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/tec3.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html">There are many
@@ -332,7 +336,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="popular-post-grid">
 													<div class="post-img">
 														<a href="single.html"><img
-															src="bootstrap/images/tec4.jpg" alt="" /></a>
+															th:src="@{/bootstrap/images/tec4.jpg}" alt="" /></a>
 													</div>
 													<div class="post-text">
 														<a class="pp-title" href="single.html">Sed ut
@@ -348,168 +352,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-							</div>
-							<div>
-								<input id="label-3" name="lida" type="radio" /> <label
-									for="label-3" id="item3"><i class="icon-trophy" id="i3"></i>Comments<i
-									class="icon-plus-sign i-right1"></i><i
-									class="icon-minus-sign i-right2"></i></label>
-								<div class="content" id="a3">
-									<div class="scrollbar" id="style-2">
-										<div class="force-overflow">
-											<div class="response">
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>MARCH 21, 2015</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>MARCH 26, 2015</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>MAY 25, 2015</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>FEB 13, 2015</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>JAN 28, 2015</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>APR 18, 2015</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-												<div class="media response-info">
-													<div class="media-left response-text-left">
-														<a href="#"> <img class="media-object"
-															src="bootstrap/images/icon1.png" alt="" />
-														</a>
-														<h5>
-															<a href="#">Username</a>
-														</h5>
-													</div>
-													<div class="media-body response-text-right">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit,There are many variations of passages of Lorem Ipsum
-															available, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua.</p>
-														<ul>
-															<li>DEC 25, 2014</li>
-															<li><a href="single.html">Reply</a></li>
-														</ul>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-
 									</div>
 								</div>
 							</div>
@@ -552,7 +394,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="popular-grids">
 							<div class="popular-grid">
 								<a href="single.html"><img
-									src="bootstrap/images/popular-4.jpg" alt="" /></a> <a
+									th:src="@{/bootstrap/images/popular-4.jpg}" alt="" /></a> <a
 									class="title" href="single.html">It is a long established
 									fact that a reader will be distracted</a>
 								<p>
@@ -566,7 +408,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="popular-grid">
 								<a href="single.html"><img
-									src="bootstrap/images/popular-1.jpg" alt="" /></a> <a
+									th:src="@{/bootstrap/images/popular-1.jpg}" alt="" /></a> <a
 									class="title" href="single.html">It is a long established
 									fact that a reader will be distracted</a>
 								<p>
@@ -580,7 +422,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="popular-grid">
 								<iframe width="100%"
-									src="https://www.youtube.com/embed/LGMn_yi_62k" frameborder="0"
+									th:src="@{https://www.youtube.com/embed/LGMn_yi_62k}" frameborder="0"
 									allowfullscreen></iframe>
 								<a class="title" href="single.html">Aishwarya Rai Bachchan's
 									Latest SHOCKING News For Ex Salman Khan</a>
@@ -595,7 +437,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="popular-grid">
 								<a href="single.html"><img
-									src="bootstrap/images/popular-3.jpg" alt="" /></a> <a
+									th:src="@{/bootstrap/images/popular-3.jpg}" alt="" /></a> <a
 									class="title" href="single.html">It is a long established
 									fact that a reader will be distracted</a>
 								<p>
@@ -618,13 +460,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- content-section-ends-here -->
 	<!-- footer-section-starts-here -->
-	<div class="footer">
+	<div class="footer" th:fragment="footer">
 
 		<div class="footer-bottom">
 			<div class="wrap">
 				<div class="copyrights col-md-6">
 					<p>
-						© 2015 Express News. All Rights Reserved | Design by <a
+						© 2017 Express News. All Rights Reserved | Design by <a
 							href="http://w3layouts.com/"> W3layouts</a>
 					</p>
 				</div>
@@ -661,7 +503,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<a href="#to-top" id="toTop" style="display: block;"> <span
 		id="toTopHover" style="opacity: 1;"> </span></a>
 	<!---->
-	<script src="js/my.js"></script>
+	<script th:src="@{/js/my.js}"></script>
 
 </body>
 </html>
