@@ -36,9 +36,20 @@
          3. page.items：原生的page包含两个属性number（选中页），size（步长）比如5，那么page.items代表包含以选中页为中心的5个页面。
             3.1 如果是current页那么设置为acitve，并且text为item.number,否则设置text为item.number并设置url
          4. 下同-->
-     <li th:class="${page.firstPage}?'disabled':''"><span th:if="${page.firstPage}"  th:class="page">← First</span> <a th:class="mypage" th:if="${not page.firstPage}" >← First</a></li> 
-     <li th:class="${page.hasPreviousPage}? '' : 'disabled'"><span th:if="${not page.hasPreviousPage}">&laquo;</span> <a th:class="mypage" th:if="${page.hasPreviousPage}"   title="Go to previous page">&laquo;</a></li> 
-     <li th:each="item : ${page.items}" th:class="${item.current}? 'active' : ''"><span th:if="${item.current}"  th:text="${item.number}">1</span> <a th:class="mypage" th:if="${not item.current}" data-th-size="${page.getSize()}" ><span th:text="${item.number}" th:class="page">1</span></a></li> 
+     <li th:class="${page.firstPage}?'disabled':''">
+     <span th:if="${page.firstPage}">← First</span> 
+     <a th:class="mypage" th:if="${not page.firstPage}" >← First</a>
+     </li> 
+     <li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+     <span th:if="${not page.hasPreviousPage}">&laquo;</span> 
+     <a th:class="mypage" th:if="${page.hasPreviousPage}"   title="Go to previous page">&laquo;</a>
+     </li> 
+     <li th:each="item : ${page.items}" th:class="${item.current}? 'active' : ''">
+     <span th:if="${item.current}"  th:text="${item.number}">1</span> 
+     <a th:class="mypage" th:if="${not item.current}" data-th-size="${page.getSize()}" >
+     <span th:text="${item.number}" th:class="page">1</span>
+     </a>
+     </li> 
      <li th:class="${page.hasNextPage}? '' : 'disabled'"><span th:if="${not page.hasNextPage}" >&raquo;</span> <a th:class="mypage" th:if="${page.hasNextPage}"  title="Go to next page">&raquo;</a></li> 
      <li th:class="${page.lastPage}? 'disabled' : ''"><span th:if="${page.lastPage}" >Last →</span> <a th:class="mypage" th:if="${not page.lastPage}" data-th-size="${page.getTotalPages()}" >Last →</a></li> 
     </ul> 
