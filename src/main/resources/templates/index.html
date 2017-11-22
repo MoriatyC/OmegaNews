@@ -159,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</header>
 					<div class="article" th:each="news:${newsList}" >
 						<div class="article-left">
-							<a th:href="'single/'+${news.docid}"><img th:src="${news.imgsrc}"></a>
+							<a th:id="${news.docid}"><img th:src="${news.imgsrc}"></a>
 						</div>
 						<div class="article-right">
 							<div class="article-title">
@@ -171,12 +171,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										class="span_link" href="#"><span
 										class="glyphicon glyphicon-thumbs-up"></span>52</a>
 								</p>
-								<a class="title" th:href="'single/'+${news.docid}" th:text="${news.title}">
+								<a class="title" th:id="${news.docid}" th:text="${news.title}">
 								</a>
 							</div>
 							<div class="article-text">
 								<p th:text="${news.digest}"></p>
-								<a th:href="'single/'+${news.docid}"><img th:src="@{/bootstrap/images/more.png}"
+								<a th:id="${news.docid}"><img th:src="@{/bootstrap/images/more.png}"
 									alt="图片飞走了" /></a>
 								<div class="clearfix"></div>
 							</div>

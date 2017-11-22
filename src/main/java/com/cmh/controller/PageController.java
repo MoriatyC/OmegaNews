@@ -63,6 +63,7 @@ public class PageController {
         model.addAttribute("content", content);
         return "single";
     }
+    static int count = 0;
     @RequestMapping("/article/{docid}")
     public String article( Model model, @PathVariable("docid") String docid) {
         News news = newsRepository.findByDocid(docid);
