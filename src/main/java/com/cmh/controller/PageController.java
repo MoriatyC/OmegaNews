@@ -63,10 +63,12 @@ public class PageController {
         model.addAttribute("content", content);
         return "single";
     }
-    @RequestMapping("/demo")
-    public String news() {
-//        List<Category> categories = categoryRepository.findAll();
-//        model.addAttribute("categories", categories);
-        return "demo";
+    @RequestMapping("/article/{docid}")
+    public String article( Model model, @PathVariable("docid") String docid) {
+        News news = newsRepository.findByDocid(docid);
+        Article article = articleRepository.findByUrl(news.getArticleId().getUrl());
+        String content = article.getContent().replace("class=\"content\"", "class=\"blog-post\"");
+        model.addAttribute("content", content);
+        return "article";
     }
 }

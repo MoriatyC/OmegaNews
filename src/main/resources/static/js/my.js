@@ -46,6 +46,14 @@ $(document).on('click', '.mypage',function() {
 		}
 	});
 })
-
-
-
+$(document).on('click', '.article a',function() {
+	var id = $(this).attr('id');
+		$.ajax({
+		url : '/article/' + id,
+		type : 'get',
+		dataType : 'text',
+		success : function(data) {
+			$('#replacement').html(data);
+		}
+	});
+})
