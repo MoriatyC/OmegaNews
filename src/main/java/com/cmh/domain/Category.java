@@ -1,4 +1,4 @@
-package com.cmh.model;
+package com.cmh.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

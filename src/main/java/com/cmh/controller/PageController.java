@@ -1,6 +1,8 @@
 package com.cmh.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,16 +15,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cmh.dao.ArticleRepository;
 import com.cmh.dao.CategoryRepository;
 import com.cmh.dao.NewsRepository;
-import com.cmh.model.Article;
-import com.cmh.model.Category;
-import com.cmh.model.News;
+import com.cmh.dao.RedisDao;
+import com.cmh.domain.Article;
+import com.cmh.domain.Category;
+import com.cmh.domain.News;
 
+/**
+ * @author cmh
+ *
+ */
 @Controller
 public class PageController {
-  
+
     private CategoryRepository categoryRepository;
     private NewsRepository newsRepository;
     private ArticleRepository articleRepository;
+    @Autowired
+    private RedisDao redisDao;
     @Autowired
     public void setCategoryRepository(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
@@ -37,10 +46,32 @@ public class PageController {
     }
     @RequestMapping("/")
     public String index(Model model) {
-        List<News> newsList = newsRepository.findFirst10AllByOrderByPtimeDesc();
+        StringBuilder sb = new StringBuilder();
+        List<News> newsList = new ArrayList<>();;
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute("categories", categories);
+        
+        Set timeRank = redisDao.getTop("time:", 10);
+        for (Object o: timeRank) {
+            String id = o.toString();
+            News news = new News();
+            news.setImgsrc(redisDao.hget(id, "imgsrc").toString());
+            news.setCommentCount(Integer.valueOf(redisDao.hget(id, "commentCount").toString()));
+            news.setTitle(redisDao.hget(id, "title").toString());
+            news.setDigest(redisDao.hget(id, "digest").toString());
+            news.setDocid(o.toString().split(":")[1]);
+            newsList.add(news);
+        }
         model.addAttribute("newsList", newsList);
+        Set rankOrigin = redisDao.getTop("score:", 10);
+        List<String> rank = new ArrayList<String>();
+        
+        for (Object o: rankOrigin) {
+            String mapName = sb.append("news:").append(o.toString().split(":")[1]).toString();
+            rank.add(redisDao.hget(mapName, "title").toString());
+            sb.delete(0, sb.length());
+        }
+        model.addAttribute("hotNewsList", rank);
         return "index";
     }
     @RequestMapping("/category")
