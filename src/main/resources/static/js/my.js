@@ -9,13 +9,14 @@ $(document).on('click', '.article a',function() {
 })
 
 
+
 window.onhashchange=function(){
-			var hash = window.location.hash;			
+			var hash = window.location.hash;	
 			hashList = hash.substr(1).split('-')
 			if(hashList[0] == 'category'){
 				var id = hashList[1]
 				$.ajax({
-					url : '/category',
+					url : '/category/',
 					type : 'get',
 					dataType : 'text',
 					data : {
@@ -56,7 +57,17 @@ window.onhashchange=function(){
 		};
 
 
-
+		$(document).on('click', '.glyphicon-thumbs-up',function() {
+			var id = $(this).attr('id');
+			$.ajax({
+				url : '/upvote/' + id + "/",
+				type : 'get',
+				dataType : 'text',
+				success : function(data) {
+					
+				}
+			});
+		})
 //分页器
 var page;
 $(document).on('click', '.mypage',function() {
@@ -76,17 +87,4 @@ $(document).on('click', '.mypage',function() {
 		page = x - 1;
 	}
 	window.location.hash='page-' + page;
-//	$.ajax({
-//		url : '/category' ,
-//		type : 'get',
-//		dataType : 'text',
-//		data : {
-//			"id" : category,
-//			"page":page,
-//			"size":20
-//		},
-//		success : function(data) {
-//			$('#replacement').html(data);
-//		}
-//	});
 })

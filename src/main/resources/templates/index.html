@@ -3,19 +3,20 @@
 <head>
 <title>OmegaNews</title>
 <link th:href="@{/bootstrap/css/bootstrap.css}" rel='stylesheet'
-    type='text/css' />
+	type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script th:src="@{/js/jquery.min.js}"></script>
 <!-- Custom Theme files -->
-<link th:href="@{/bootstrap/css/style.css}" rel="stylesheet" type="text/css"
-    media="all" />
+<link th:href="@{/bootstrap/css/style.css}" rel="stylesheet"
+	type="text/css" media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
-    content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
     
     
     
@@ -25,40 +26,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
+
 </script>
 <!-- for bootstrap working -->
-<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.js}"></script>
 <!-- //for bootstrap working -->
 <!-- web-fonts -->
 <link
-    href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-    rel='stylesheet' type='text/css'>
+	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Varela+Round'
-    rel='stylesheet' type='text/css'>
+	rel='stylesheet' type='text/css'>
 <script th:src="@{/js/responsiveslides.min.js}"></script>
 <script>
-    $(function() {
-        $("#slider").responsiveSlides({
-            auto : true,
-            nav : true,
-            speed : 500,
-            namespace : "callbacks",
-            pager : true,
-        });
-    });
+	$(function() {
+		$("#slider").responsiveSlides({
+			auto : true,
+			nav : true,
+			speed : 500,
+			namespace : "callbacks",
+			pager : true,
+		});
+	});
 </script>
 <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
 <script type="text/javascript" th:src="@{/js/easing.js}"></script>
 <!--/script-->
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $(".scroll").click(function(event) {
-            event.preventDefault();
-            $('html,body').animate({
-                scrollTop : $(this.hash).offset().top
-            }, 900);
-        });
-    });
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 900);
+		});
+	});
 </script>
 </head>
 <body>
@@ -66,7 +69,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header" th:fragment="headertop">
 		<div class="header-bottom">
 			<div class="logo text-center">
-				<a href="index.html"><img th:src="@{/bootstrap/images/logo.jpg}" alt="" /></a>
+				<a href="index.html"><img th:src="@{/bootstrap/images/logo.jpg}"
+					alt="" /></a>
 			</div>
 			<div class="navigation">
 				<nav class="navbar navbar-default" role="navigation">
@@ -157,7 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<header>
 						<h3 class="title-head">最新资讯</h3>
 					</header>
-					<div class="article" th:each="news:${newsList}" >
+					<div class="article" th:each="news:${newsList}">
 						<div class="article-left">
 							<a th:id="${news.docid}"><img th:src="${news.imgsrc}"></a>
 						</div>
@@ -167,17 +171,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<a class="span_link" href="#" th:text="${news.commentCount}"><span
 										class="glyphicon glyphicon-comment"></span> </a><a
 										class="span_link" href="#"><span
-										class="glyphicon glyphicon-eye-open"></span>104 </a><a
+										class="glyphicon glyphicon-eye-open"></span>104 </a><div
 										class="span_link" href="#"><span
-										class="glyphicon glyphicon-thumbs-up"></span>52</a>
+										class="glyphicon glyphicon-thumbs-up" th:id="${news.docid}"></span>52</div>
 								</p>
 								<a class="title" th:id="${news.docid}" th:text="${news.title}">
 								</a>
 							</div>
 							<div class="article-text">
 								<p th:text="${news.digest}"></p>
-								<a th:id="${news.docid}"><img th:src="@{/bootstrap/images/more.png}"
-									alt="图片飞走了" /></a>
+								<a th:id="${news.docid}"><img
+									th:src="@{/bootstrap/images/more.png}" alt="图片飞走了" /></a>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -389,65 +393,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="popular-news">
 						<header>
-							<h3 class="title-popular">热门新闻</h3>
+							<h3 class="title-popular">本周热点</h3>
 						</header>
 						<div class="popular-grids">
-							<div class="popular-grid">
-								<a href="single.html"><img
-									th:src="@{/bootstrap/images/popular-4.jpg}" alt="" /></a> <a
-									class="title" href="single.html">It is a long established
-									fact that a reader will be distracted</a>
-								<p>
-									On Aug 31, 2015 <a class="span_link" href="#"><span
-										class="glyphicon glyphicon-comment"></span>0 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-eye-open"></span>250 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-thumbs-up"></span>68</a>
-								</p>
-							</div>
-							<div class="popular-grid">
-								<a href="single.html"><img
-									th:src="@{/bootstrap/images/popular-1.jpg}" alt="" /></a> <a
-									class="title" href="single.html">It is a long established
-									fact that a reader will be distracted</a>
-								<p>
-									On Mar 14, 2015 <a class="span_link" href="#"><span
-										class="glyphicon glyphicon-comment"></span>0 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-eye-open"></span>250 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-thumbs-up"></span>68</a>
-								</p>
-							</div>
-							<div class="popular-grid">
-								<iframe width="100%"
-									th:src="@{https://www.youtube.com/embed/LGMn_yi_62k}" frameborder="0"
-									allowfullscreen></iframe>
-								<a class="title" href="single.html">Aishwarya Rai Bachchan's
-									Latest SHOCKING News For Ex Salman Khan</a>
-								<p>
-									On Mar 14, 2015 <a class="span_link" href="#"><span
-										class="glyphicon glyphicon-comment"></span>0 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-eye-open"></span>250 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-thumbs-up"></span>68</a>
-								</p>
-							</div>
-							<div class="popular-grid">
-								<a href="single.html"><img
-									th:src="@{/bootstrap/images/popular-3.jpg}" alt="" /></a> <a
-									class="title" href="single.html">It is a long established
-									fact that a reader will be distracted</a>
-								<p>
-									On Mar 14, 2015 <a class="span_link" href="#"><span
-										class="glyphicon glyphicon-comment"></span>0 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-eye-open"></span>250 </a><a
-										class="span_link" href="#"><span
-										class="glyphicon glyphicon-thumbs-up"></span>68</a>
-								</p>
+							<div class="article" th:each="news:${hotNewsList}">
+                                    <a class="title" th:id="${newsStat.count}"  th:text="${newsStat.count}+'.  '+${news}">
+                                </a>
 							</div>
 						</div>
 					</div>

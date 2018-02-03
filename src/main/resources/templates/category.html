@@ -13,8 +13,8 @@
 					<a class="span_link" href="#" th:text="${news.commentCount}"><span
 						class="glyphicon glyphicon-comment"></span> </a><a class="span_link"
 						href="#"><span class="glyphicon glyphicon-eye-open"></span>104
-					</a><a class="span_link" href="#"><span
-						class="glyphicon glyphicon-thumbs-up"></span>52</a>
+					</a><div class="span_link" href="#"><span
+						class="glyphicon glyphicon-thumbs-up" th:id="${news.docid}"></span>52</div>
 				</p>
 				<a class="title" th:id="${news.docid}" th:text="${news.title}"> </a>
 			</div>
